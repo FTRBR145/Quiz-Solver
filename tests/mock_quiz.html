@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Simulasi Ujian Online / Kuis Bertahap</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f6f9; padding: 40px; display: flex; justify-content: center; }
+        .quiz-card { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); width: 600px; }
+        .question-header { font-size: 18px; font-weight: bold; margin-bottom: 15px; color: #2c3e50; }
+        .question-text { font-size: 16px; margin-bottom: 20px; line-height: 1.5; }
+        .options { margin-bottom: 25px; }
+        .option-item { margin-bottom: 10px; display: flex; align-items: center; cursor: pointer; }
+        .option-item input { margin-right: 12px; }
+        .btn-group { display: flex; justify-content: space-between; margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px; }
+        .btn { padding: 10px 20px; border: none; border-radius: 4px; font-size: 14px; cursor: pointer; }
+        .btn-primary { background: #3498db; color: white; }
+        .btn-success { background: #2ecc71; color: white; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+<div class="quiz-card">
+    <!-- Soal 1 -->
+    <div id="step-1" class="question-container" data-question="1">
+        <div class="question-header">Soal No. 1 dari 3</div>
+        <div class="question-text">Organel sel manakah yang berfungsi sebagai tempat terjadinya proses fotosintesis pada sel tumbuhan?</div>
+        <div class="options">
+            <label class="option-item"><input type="radio" name="q1" value="A"> A. Mitokondria</label>
+            <label class="option-item"><input type="radio" name="q1" value="B"> B. Kloroplas</label>
+            <label class="option-item"><input type="radio" name="q1" value="C"> C. Ribosom</label>
+            <label class="option-item"><input type="radio" name="q1" value="D"> D. Badan Golgi</label>
+        </div>
+        <div class="btn-group">
+            <div></div>
+            <button type="button" class="btn btn-primary btn-next" onclick="goToStep(2)">Berikutnya</button>
+        </div>
+    </div>
+
+    <!-- Soal 2 -->
+    <div id="step-2" class="question-container hidden" data-question="2">
+        <div class="question-header">Soal No. 2 dari 3</div>
+        <div class="question-text">Ibu kota negara Indonesia berdasarkan Undang-Undang IKN yang baru adalah...</div>
+        <div class="options">
+            <label class="option-item"><input type="radio" name="q2" value="A"> A. Jakarta</label>
+            <label class="option-item"><input type="radio" name="q2" value="B"> B. Nusantara</label>
+            <label class="option-item"><input type="radio" name="q2" value="C"> C. Bandung</label>
+            <label class="option-item"><input type="radio" name="q2" value="D"> D. Surabaya</label>
+        </div>
+        <div class="btn-group">
+            <div></div>
+            <button type="button" class="btn btn-primary btn-next" onclick="goToStep(3)">Berikutnya</button>
+        </div>
+    </div>
+
+    <!-- Soal 3 -->
+    <div id="step-3" class="question-container hidden" data-question="3">
+        <div class="question-header">Soal No. 3 dari 3</div>
+        <div class="question-text">Berapakah hasil dari operasi matematika (15 * 4) - (30 / 2)?</div>
+        <div class="options">
+            <label class="option-item"><input type="radio" name="q3" value="A"> A. 40</label>
+            <label class="option-item"><input type="radio" name="q3" value="B"> B. 45</label>
+            <label class="option-item"><input type="radio" name="q3" value="C"> C. 50</label>
+            <label class="option-item"><input type="radio" name="q3" value="D"> D. 55</label>
+        </div>
+        <div class="btn-group">
+            <div></div>
+            <button type="button" class="btn btn-success" id="btn-finish" onclick="finishQuiz()">Selesai Ujian</button>
+        </div>
+    </div>
+
+    <div id="step-finish" class="hidden">
+        <h2>Ujian Selesai!</h2>
+        <p>Terima kasih telah menyelesaikan ujian.</p>
+    </div>
+</div>
+
+<script>
+    function goToStep(step) {
+        document.querySelectorAll('.question-container').forEach(el => el.classList.add('hidden'));
+        document.getElementById('step-' + step).classList.remove('hidden');
+    }
+    function finishQuiz() {
+        document.querySelectorAll('.question-container').forEach(el => el.classList.add('hidden'));
+        document.getElementById('step-finish').classList.remove('hidden');
+    }
+</script>
+
+</body>
+</html>
+

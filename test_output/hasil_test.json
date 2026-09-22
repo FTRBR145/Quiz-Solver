@@ -1,0 +1,34 @@
+[
+  {
+    "question": {
+      "number": 1,
+      "question_text": "Organel sel manakah yang berfungsi sebagai tempat fotosintesis?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Mitokondria"
+        },
+        {
+          "label": "B",
+          "text": "Kloroplas"
+        },
+        {
+          "label": "C",
+          "text": "Ribosom"
+        },
+        {
+          "label": "D",
+          "text": "Badan Golgi"
+        }
+      ],
+      "question_type": "multiple_choice"
+    },
+    "result": {
+      "best_option": "B",
+      "answer_text": "Kloroplas",
+      "explanation": "Kloroplas mengandung klorofil yang menyerap energi cahaya untuk reaksi fotosintesis.",
+      "confidence": 0.99
+    },
+    "timestamp": null
+  }
+]

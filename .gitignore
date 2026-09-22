@@ -1,0 +1,21 @@
+.env
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local browser and test profiles
+browser_profile/
+test_profile/
+
+# Generated runtime exports
+hasil_kuis.json
+hasil_kuis.md
+soal_terpilih.md
+
+# Local editor and OS files
+.vscode/
+.idea/
+Thumbs.db
+Desktop.ini

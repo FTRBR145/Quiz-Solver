@@ -1,0 +1,98 @@
+[
+  {
+    "question": {
+      "number": 1,
+      "question_text": "Organel sel manakah yang berfungsi sebagai tempat terjadinya proses fotosintesis pada sel tumbuhan?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Mitokondria"
+        },
+        {
+          "label": "B",
+          "text": "Kloroplas"
+        },
+        {
+          "label": "C",
+          "text": "Ribosom"
+        },
+        {
+          "label": "D",
+          "text": "Badan Golgi"
+        }
+      ],
+      "question_type": "pilihan ganda"
+    },
+    "result": {
+      "best_option": "B",
+      "answer_text": "Kloroplas",
+      "explanation": "Kloroplas adalah organel sel tumbuhan yang mengandung zat hijau daun (klorofil) dan berfungsi sebagai tempat berlangsungnya proses fotosintesis. Sedangkan mitokondria berfungsi untuk respirasi sel, ribosom untuk sintesis protein, dan badan Golgi untuk sekresi sel.",
+      "confidence": 1.0
+    },
+    "timestamp": null
+  },
+  {
+    "question": {
+      "number": 2,
+      "question_text": "Ibu kota negara Indonesia berdasarkan Undang-Undang IKN yang baru adalah...",
+      "options": [
+        {
+          "label": "A",
+          "text": "Jakarta"
+        },
+        {
+          "label": "B",
+          "text": "Nusantara"
+        },
+        {
+          "label": "C",
+          "text": "Bandung"
+        },
+        {
+          "label": "D",
+          "text": "Surabaya"
+        }
+      ],
+      "question_type": "multiple_choice"
+    },
+    "result": {
+      "best_option": "B",
+      "answer_text": "Nusantara",
+      "explanation": "Berdasarkan Undang-Undang Nomor 3 Tahun 2022 tentang Ibu Kota Negara (UU IKN), ibu kota negara Republik Indonesia dipindahkan dari Jakarta ke Nusantara yang terletak di wilayah Provinsi Kalimantan Timur.",
+      "confidence": 1.0
+    },
+    "timestamp": null
+  },
+  {
+    "question": {
+      "number": 3,
+      "question_text": "Berapakah hasil dari operasi matematika (15 * 4) - (30 / 2)?",
+      "options": [
+        {
+          "label": "A",
+          "text": "40"
+        },
+        {
+          "label": "B",
+          "text": "45"
+        },
+        {
+          "label": "C",
+          "text": "50"
+        },
+        {
+          "label": "D",
+          "text": "55"
+        }
+      ],
+      "question_type": "multiple_choice"
+    },
+    "result": {
+      "best_option": "B",
+      "answer_text": "45",
+      "explanation": "Lakukan operasi di dalam tanda kurung terlebih dahulu. (15 * 4) = 60 dan (30 / 2) = 15. Selanjutnya, kurangkan hasil keduanya: 60 - 15 = 45.",
+      "confidence": 1.0
+    },
+    "timestamp": null
+  }
+]
