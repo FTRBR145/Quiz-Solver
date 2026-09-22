@@ -42,7 +42,15 @@ def test_browser_step_by_step():
         assert "(15 * 4)" in content3, f"Gagal masuk soal 3: {content3}"
         print("    [OK] Navigasi ke Soal 3 Berhasil!")
 
-        # Cek tombol Selesai / Finish
+        # Lanjutkan sampai soal terakhir dari total 60 soal
+        for question_number in range(4, 61):
+            clicked_next = agent.click_next()
+            assert clicked_next, f"Gagal berpindah ke soal {question_number}"
+
+        final_content = agent.get_current_question_content()
+        assert "Soal No. 60 dari 60" in final_content, "Soal terakhir bukan nomor 60"
+
+        # Cek tombol Selesai / Finish pada soal terakhir
         has_finish = agent.is_finish_available()
         assert has_finish, "Tombol Selesai Ujian tidak terdeteksi pada nomor terakhir"
         print("    [OK] Deteksi Tombol Selesai Ujian Berhasil!")

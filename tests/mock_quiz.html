@@ -21,53 +21,7 @@
 <body>
 
 <div class="quiz-card">
-    <!-- Soal 1 -->
-    <div id="step-1" class="question-container" data-question="1">
-        <div class="question-header">Soal No. 1 dari 3</div>
-        <div class="question-text">Organel sel manakah yang berfungsi sebagai tempat terjadinya proses fotosintesis pada sel tumbuhan?</div>
-        <div class="options">
-            <label class="option-item"><input type="radio" name="q1" value="A"> A. Mitokondria</label>
-            <label class="option-item"><input type="radio" name="q1" value="B"> B. Kloroplas</label>
-            <label class="option-item"><input type="radio" name="q1" value="C"> C. Ribosom</label>
-            <label class="option-item"><input type="radio" name="q1" value="D"> D. Badan Golgi</label>
-        </div>
-        <div class="btn-group">
-            <div></div>
-            <button type="button" class="btn btn-primary btn-next" onclick="goToStep(2)">Berikutnya</button>
-        </div>
-    </div>
-
-    <!-- Soal 2 -->
-    <div id="step-2" class="question-container hidden" data-question="2">
-        <div class="question-header">Soal No. 2 dari 3</div>
-        <div class="question-text">Ibu kota negara Indonesia berdasarkan Undang-Undang IKN yang baru adalah...</div>
-        <div class="options">
-            <label class="option-item"><input type="radio" name="q2" value="A"> A. Jakarta</label>
-            <label class="option-item"><input type="radio" name="q2" value="B"> B. Nusantara</label>
-            <label class="option-item"><input type="radio" name="q2" value="C"> C. Bandung</label>
-            <label class="option-item"><input type="radio" name="q2" value="D"> D. Surabaya</label>
-        </div>
-        <div class="btn-group">
-            <div></div>
-            <button type="button" class="btn btn-primary btn-next" onclick="goToStep(3)">Berikutnya</button>
-        </div>
-    </div>
-
-    <!-- Soal 3 -->
-    <div id="step-3" class="question-container hidden" data-question="3">
-        <div class="question-header">Soal No. 3 dari 3</div>
-        <div class="question-text">Berapakah hasil dari operasi matematika (15 * 4) - (30 / 2)?</div>
-        <div class="options">
-            <label class="option-item"><input type="radio" name="q3" value="A"> A. 40</label>
-            <label class="option-item"><input type="radio" name="q3" value="B"> B. 45</label>
-            <label class="option-item"><input type="radio" name="q3" value="C"> C. 50</label>
-            <label class="option-item"><input type="radio" name="q3" value="D"> D. 55</label>
-        </div>
-        <div class="btn-group">
-            <div></div>
-            <button type="button" class="btn btn-success" id="btn-finish" onclick="finishQuiz()">Selesai Ujian</button>
-        </div>
-    </div>
+    <div id="questions"></div>
 
     <div id="step-finish" class="hidden">
         <h2>Ujian Selesai!</h2>
@@ -76,6 +30,90 @@
 </div>
 
 <script>
+    const questions = [
+        ["Organel sel manakah yang berfungsi sebagai tempat terjadinya proses fotosintesis pada sel tumbuhan?", ["Mitokondria", "Kloroplas", "Ribosom", "Badan Golgi"]],
+        ["Ibu kota negara Indonesia berdasarkan Undang-Undang IKN yang baru adalah...", ["Jakarta", "Nusantara", "Bandung", "Surabaya"]],
+        ["Berapakah hasil dari operasi matematika (15 * 4) - (30 / 2)?", ["40", "45", "50", "55"]],
+        ["Planet yang dikenal sebagai Planet Merah adalah...", ["Venus", "Mars", "Jupiter", "Saturnus"]],
+        ["Hasil dari 12 x 8 adalah...", ["86", "96", "106", "116"]],
+        ["Simbol kimia untuk emas adalah...", ["Ag", "Au", "Fe", "Hg"]],
+        ["Benua terbesar di dunia adalah...", ["Afrika", "Asia", "Eropa", "Amerika"]],
+        ["Hewan yang mengalami metamorfosis sempurna adalah...", ["Kupu-kupu", "Kucing", "Ayam", "Kadal"]],
+        ["Satuan SI untuk panjang adalah...", ["Liter", "Kilogram", "Meter", "Sekon"]],
+        ["Proklamasi Kemerdekaan Indonesia dibacakan pada tahun...", ["1942", "1945", "1948", "1950"]],
+        ["Ibukota Provinsi Jawa Barat adalah...", ["Semarang", "Bandung", "Serang", "Bogor"]],
+        ["Alat untuk mengukur suhu disebut...", ["Barometer", "Termometer", "Higrometer", "Anemometer"]],
+        ["Lambang sila pertama Pancasila adalah...", ["Bintang", "Rantai", "Pohon beringin", "Kepala banteng"]],
+        ["Gas yang paling banyak terdapat di atmosfer bumi adalah...", ["Oksigen", "Nitrogen", "Karbon dioksida", "Hidrogen"]],
+        ["Hasil dari 144 dibagi 12 adalah...", ["10", "12", "14", "16"]],
+        ["Proses perubahan air menjadi uap disebut...", ["Membeku", "Menguap", "Mengembun", "Mencair"]],
+        ["Gunung tertinggi di Indonesia adalah...", ["Semeru", "Kerinci", "Puncak Jaya", "Rinjani"]],
+        ["Bahasa resmi negara Indonesia adalah...", ["Bahasa Jawa", "Bahasa Indonesia", "Bahasa Melayu", "Bahasa Sunda"]],
+        ["Organ tubuh manusia yang berfungsi memompa darah adalah...", ["Paru-paru", "Jantung", "Ginjal", "Lambung"]],
+        ["Sumber energi utama bagi bumi adalah...", ["Bulan", "Matahari", "Angin", "Batu bara"]],
+        ["Hasil dari 25 + 37 adalah...", ["52", "62", "72", "82"]],
+        ["Candi Borobudur terletak di provinsi...", ["Jawa Tengah", "Jawa Timur", "Bali", "Yogyakarta"]],
+        ["Mamalia terbesar di dunia adalah...", ["Gajah", "Paus biru", "Jerapah", "Badak"]],
+        ["Zat makanan pembangun tubuh adalah...", ["Protein", "Vitamin", "Mineral", "Air"]],
+        ["Benda yang dapat ditarik magnet biasanya terbuat dari...", ["Kayu", "Plastik", "Besi", "Kaca"]],
+        ["Hasil dari 9 kuadrat adalah...", ["18", "72", "81", "90"]],
+        ["Laut yang memisahkan Pulau Jawa dan Pulau Kalimantan adalah...", ["Laut Jawa", "Laut Banda", "Laut Arafura", "Laut Sulawesi"]],
+        ["Indra manusia yang digunakan untuk mendengar adalah...", ["Mata", "Hidung", "Telinga", "Kulit"]],
+        ["Satuan waktu setelah menit adalah...", ["Jam", "Hari", "Detik", "Minggu"]],
+        ["Hewan pemakan tumbuhan disebut...", ["Karnivora", "Herbivora", "Omnivora", "Insektivora"]],
+        ["Bilangan prima terkecil adalah...", ["0", "1", "2", "3"]],
+        ["Presiden pertama Republik Indonesia adalah...", ["Soeharto", "Soekarno", "B. J. Habibie", "Abdurrahman Wahid"]],
+        ["Bagian tumbuhan yang menyerap air dan mineral dari tanah adalah...", ["Daun", "Batang", "Bunga", "Akar"]],
+        ["Alat untuk melihat benda yang sangat kecil adalah...", ["Teleskop", "Mikroskop", "Periskop", "Kaleidoskop"]],
+        ["Hasil dari 7 x 9 adalah...", ["56", "63", "72", "81"]],
+        ["Rumah adat Sumatera Barat dikenal dengan nama...", ["Rumah Gadang", "Tongkonan", "Honai", "Joglo"]],
+        ["Perubahan wujud dari cair menjadi padat disebut...", ["Menguap", "Mencair", "Membeku", "Menyublim"]],
+        ["Sistem peredaran darah manusia disebut sistem...", ["Pencernaan", "Sirkulasi", "Pernapasan", "Ekskresi"]],
+        ["Benda langit yang mengelilingi planet disebut...", ["Asteroid", "Satelit", "Komet", "Meteoroid"]],
+        ["Hasil dari 1000 - 275 adalah...", ["625", "725", "825", "925"]],
+        ["Tari Kecak berasal dari...", ["Bali", "Papua", "Aceh", "Maluku"]],
+        ["Lapisan atmosfer tempat terjadinya cuaca adalah...", ["Troposfer", "Stratosfer", "Mesosfer", "Termosfer"]],
+        ["Hewan yang berkembang biak dengan bertelur disebut...", ["Vivipar", "Ovipar", "Ovovivipar", "Membelah diri"]],
+        ["Semboyan bangsa Indonesia adalah...", ["Tut Wuri Handayani", "Bhinneka Tunggal Ika", "Ing Ngarsa Sung Tuladha", "Jalesveva Jayamahe"]],
+        ["Hasil dari 3/4 dalam bentuk desimal adalah...", ["0,25", "0,5", "0,75", "1,25"]],
+        ["Pulau terluas di Indonesia adalah...", ["Jawa", "Bali", "Kalimantan", "Madura"]],
+        ["Tumbuhan hijau membuat makanan sendiri melalui proses...", ["Respirasi", "Fotosintesis", "Fermentasi", "Transpirasi"]],
+        ["Alat untuk mengukur tekanan udara adalah...", ["Barometer", "Termometer", "Voltmeter", "Neraca"]],
+        ["Zat hijau daun disebut...", ["Klorofil", "Hemoglobin", "Melanin", "Keratin"]],
+        ["Hasil dari 2 pangkat 5 adalah...", ["10", "16", "25", "32"]],
+        ["Samudra terluas di dunia adalah...", ["Atlantik", "Hindia", "Pasifik", "Arktik"]],
+        ["Contoh sumber daya alam yang dapat diperbarui adalah...", ["Minyak bumi", "Batu bara", "Tumbuhan", "Gas alam"]],
+        ["Pusat tata surya adalah...", ["Bumi", "Bulan", "Matahari", "Jupiter"]],
+        ["Alat musik tradisional Jawa Barat yang terbuat dari bambu adalah...", ["Angklung", "Sasando", "Kolintang", "Tifa"]],
+        ["Hasil dari 5 lusin adalah...", ["50", "60", "70", "80"]],
+        ["Garis khatulistiwa melewati wilayah Indonesia bagian...", ["Utara", "Tengah", "Selatan", "Barat saja"]],
+        ["Bagian darah yang berfungsi mengangkut oksigen adalah...", ["Plasma", "Trombosit", "Sel darah merah", "Sel darah putih"]],
+        ["Bahan bakar fosil yang berbentuk cair adalah...", ["Minyak bumi", "Batu bara", "Uranium", "Biogas"]],
+        ["Hasil dari 2,5 + 1,75 adalah...", ["3,25", "4,25", "4,5", "5,25"]],
+        ["Negara yang dikenal sebagai Negeri Sakura adalah...", ["Korea Selatan", "Jepang", "Tiongkok", "Thailand"]]
+    ];
+
+    function renderQuestions() {
+        const container = document.getElementById('questions');
+        questions.forEach((question, index) => {
+            const number = index + 1;
+            const options = question[1].map((option, optionIndex) => {
+                const label = String.fromCharCode(65 + optionIndex);
+                return `<label class="option-item"><input type="radio" name="q${number}" value="${label}"> ${label}. ${option}</label>`;
+            }).join('');
+            const action = number === questions.length
+                ? `<button type="button" class="btn btn-success" id="btn-finish" onclick="finishQuiz()">Selesai Ujian</button>`
+                : `<button type="button" class="btn btn-primary btn-next" onclick="goToStep(${number + 1})">Berikutnya</button>`;
+            container.insertAdjacentHTML('beforeend', `
+                <div id="step-${number}" class="question-container${number === 1 ? '' : ' hidden'}" data-question="${number}">
+                    <div class="question-header">Soal No. ${number} dari ${questions.length}</div>
+                    <div class="question-text">${question[0]}</div>
+                    <div class="options">${options}</div>
+                    <div class="btn-group"><div></div>${action}</div>
+                </div>`);
+        });
+    }
+
     function goToStep(step) {
         document.querySelectorAll('.question-container').forEach(el => el.classList.add('hidden'));
         document.getElementById('step-' + step).classList.remove('hidden');
@@ -84,6 +122,8 @@
         document.querySelectorAll('.question-container').forEach(el => el.classList.add('hidden'));
         document.getElementById('step-finish').classList.remove('hidden');
     }
+
+    renderQuestions();
 </script>
 
 </body>

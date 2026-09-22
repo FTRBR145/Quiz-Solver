@@ -21,7 +21,7 @@ console = Console()
 def show_banner():
     console.print(
         Panel.fit(
-            "[bold cyan]🎯 AUTO QUIZ EXTRACTOR & SOLVER[/bold cyan]\n"
+            "[bold cyan]AUTO QUIZ EXTRACTOR & SOLVER[/bold cyan]\n"
             "[yellow]Ekstraksi Soal Bertahap (1 per 1) & Penjawab Otomatis AI (Gemini 3.8 Flash)[/yellow]",
             border_style="cyan"
         )
@@ -216,7 +216,7 @@ def run_simulation(solver: GeminiSolver):
     console.print(Panel(
         f"[bold green]Memulai Simulasi Kuis Bertahap[/bold green]\n"
         f"File simulasi: [cyan]{mock_file}[/cyan]\n"
-        f"Kuis simulasi ini berisi 3 soal pilihan ganda dengan tombol 'Berikutnya' dan tombol 'Selesai'.",
+        f"Kuis simulasi ini berisi 60 soal pilihan ganda dengan tombol 'Berikutnya' dan tombol 'Selesai'.",
         border_style="green"
     ))
 
